@@ -1,0 +1,12 @@
+CREATE PROCEDURE insert_records()
+    LANGUAGE plpgsql
+    AS
+
+    $$
+    BEGIN
+        INSERT INTO locations(loc_iso_code,loc_name)
+        SELECT vbl_iso_code,vbl_location
+        FROM vaccines_by_location
+        COMMIT;
+END;
+$$

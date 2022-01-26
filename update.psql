@@ -1,0 +1,18 @@
+CREATE PROCEDURE update_number_of_vaccinations(
+    vaccine_name VARCHAR(255),
+    vaccine_location VARCHAR(255),
+    number_of_vaccinations INT,
+    vaccine_date DATE
+) 
+LANGUAGE plpgsql
+AS
+
+$$
+BEGIN
+
+    UPDATE vaccinations_by_manufacturer
+        SET vbm_total_vaccinations = number_of_vaccinations 
+        WHERE vbm_vaccine = vaccine_name AND vbm_date = vaccine_date AND vbm_location = vaccine_location;
+
+END;
+$$

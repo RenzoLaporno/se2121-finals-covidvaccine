@@ -1,0 +1,29 @@
+CREATE DATABASE covid_db;
+
+
+CREATE TABLE locations (
+    loc_iso_code VARCHAR(255) NOT NULL,
+    loc_name VARCHAR(255) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE vaccines (
+    vac_name VARCHAR(255) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE vaccinations_by_manufacturer (
+    vbm_id SERIAL PRIMARY KEY,
+    vbm_location VARCHAR(255) NOT NULL,
+    vbm_date DATE NOT NULL,
+    vbm_vaccine VARCHAR(255) NOT NULL,
+    vbm_total_vaccinations INT NOT NULL
+);
+
+CREATE TABLE vaccines_by_location (
+    vbl_id SERIAL PRIMARY KEY,
+    vbl_location VARCHAR(255) NOT NULL,
+    vbl_iso_code VARCHAR(255) NOT NULL,
+    vbl_vaccines VARCHAR(255) NOT NULL,
+    vbl_last_observation_date DATE NOT NULL,
+    vbl_source_name VARCHAR(255) NOT NULL,
+    vbl_source_website VARCHAR(255) NOT NULL
+);
